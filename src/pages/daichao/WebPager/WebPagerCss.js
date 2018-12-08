@@ -1,12 +1,10 @@
+
 import ScreenUtils from '../../../utils/ScreenUtils';
 
 export default CssConfigs = {
     page:{
-        marginTop:20,
+        flex:1,
         backgroundColor: '#F0EFF5',
-        // flexDirection: 'column-reverse',
-    },
-    Bottom:{
-        height:100
+        flexDirection: 'column',
     }
 }

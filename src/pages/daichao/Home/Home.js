@@ -27,7 +27,7 @@ constructor(props) {
 }
 //跳转下一个页面
 goToNextPage() {
-    this.props.navigation.navigate('HomePager')
+    this.props.navigation.navigate('WebPager')
 }
 
 render() {

@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Platform
 } from 'react-native';
 
 import Css from './${pageName}Css';
@@ -13,7 +14,7 @@ export default class ${pageName} extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: ${pageName}
+            selectedTab: '${pageName}'
         };
     }
     //跳转下一个页面
@@ -23,7 +24,13 @@ export default class ${pageName} extends Component {
 
     render() {
         return (
-        <View>
+        <View style={styles.page}>
+            {
+                Platform.OS === 'ios' ?
+                <View style={{ marginTop: 18 }}></View>
+                :
+                <View></View>
+            }
             <Text>${pageName}</Text>
         </View>
         );

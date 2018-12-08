@@ -17,6 +17,8 @@ import {
 
 
 import Home from './src/pages/daichao/Home/Home';
+import WebPager from './src/pages/daichao/WebPager/WebPager';
+
 import Person from './src/pages/demo/Personal/Personal';
 import HomePager from './src/pages/demo/HomePager/HomePager';
 
@@ -134,6 +136,9 @@ const Navi = StackNavigator({
     },
     Personal: {
         screen: Person,
+    },
+    WebPager:{
+         screen: WebPager,
     }
 
 },StackNavigatorConfig);
