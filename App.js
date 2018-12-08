@@ -19,6 +19,7 @@ import {
 import Home from './src/pages/daichao/Home/Home';
 import WebPager from './src/pages/daichao/WebPager/WebPager';
 
+
 import Person from './src/pages/demo/Personal/Personal';
 import HomePager from './src/pages/demo/HomePager/HomePager';
 
@@ -35,6 +36,13 @@ export  default class App extends Component<Props> {
             )
         }
     }
+}
+
+ const TabNavigatorConfig = {
+  initialRouteParams: {initPara: '初始页面参数'},
+    cardStyle: {backgroundColor: "#ffffff"},
+  headerMode: 'none', // 禁用头部
+  navigationOptions: {gesturesEnabled: false} //禁用页面的手势
 }
 
 const Tab = TabNavigator({
@@ -68,6 +76,8 @@ const Tab = TabNavigator({
     },
 
 }, {
+    cardStyle: {backgroundColor: "#ffffff"},
+    navigationOptions: {gesturesEnabled: false}, //禁用页面的手势
     //设置TabNavigator的位置，有top和bottom两个值
     tabBarPosition: 'bottom',
     //是否在更改标签时显示动画，滑动时的渐变效果

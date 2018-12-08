@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   ScrollView,
   FlatList,
+  StatusBar,
   TouchableOpacity
 } from 'react-native';
 import Swiper from 'react-native-swiper';
@@ -31,7 +32,6 @@ goToNextPage() {
 }
 
 render() {
-  // const { navigate } = this.props.navigation;
     return (
       
       <View style={styles.page}>
@@ -41,6 +41,9 @@ render() {
           :
           <View></View>
         }
+
+        <StatusBar backgroundColor={'#fff'} barStyle={'dark-content'} />
+
       <View  style={styles.swiper}>
         <Swiper
             height={100}
@@ -76,7 +79,9 @@ render() {
             {key: 'John'},
             {key: 'Jillian'},
             {key: 'Jimmy'},
-            {key: 'Julie'},
+            {key: 'Mason'},
+            {key: 'Mason1'}
+
           ]}
           renderItem={({item}) => 
           <View style={styles.list}>

@@ -4,7 +4,9 @@ import {
   Text,
   View,
   WebView,
-  Platform
+  Platform,
+  Image,
+  TouchableOpacity
 } from 'react-native';
 
 import Css from './WebPagerCss';
@@ -19,7 +21,7 @@ export default class WebPager extends Component {
     }
     //跳转下一个页面
     goToNextPage() {
-
+        this.props.navigation.navigate('Home')
     }
 
     render() {
@@ -31,9 +33,27 @@ export default class WebPager extends Component {
                     :
                     <View></View>
                 }
+                
+                <View style={styles.navigateTop}>
+                    <TouchableOpacity
+                        onPress={()=>{
+                            this.goToNextPage()
+                    }}>
+
+                        <Image style={styles.navigateIcon}
+                        source={require('../../../image/return.png') }  
+                        onPress={() => this.goToNextPage()}/>
+
+                    </TouchableOpacity>
+                    
+
+                    <Text style={styles.navigateTitle}>网页</Text>
+                    <Text style={styles.navigateTitle}></Text>
+                </View>
 
                 <WebView
                     bounces={false}
+                    // mixedContentMode={compatibility}
                     scalesPageToFit={true}
                     renderLoading = {true}
                     source={{uri:'https://www.baidu.com'}}

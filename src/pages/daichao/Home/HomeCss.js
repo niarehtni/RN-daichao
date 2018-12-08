@@ -49,11 +49,11 @@ export default CssConfigs = {
         // paddingTop: 22,
         backgroundColor: '#F2F2F2',
         height: ScreenUtils.screenH*0.56,
-        marginBottom:40
+        // marginBottom:100
     },
     list: {
         padding: 10,
-        height: 150,
+        height: ScreenUtils.screenH * 0.2,
         backgroundColor: '#fff',
         marginBottom: 10,
         flexDirection: 'column',
