@@ -19,6 +19,9 @@ export default class WebPager extends Component {
             selectedTab: 'WebPager'
         };
     }
+    componentDidMount(){
+        global.showLoading();
+    }
     //跳转下一个页面
     goToNextPage() {
         this.props.navigation.navigate('Home')
@@ -53,10 +56,13 @@ export default class WebPager extends Component {
 
                 <WebView
                     bounces={false}
-                    // mixedContentMode={compatibility}
+                    onLoadEnd={()=>{
+                        global.closeLoading();
+                    }}
+                    mixedContentMode={'compatibility'}
                     scalesPageToFit={true}
-                    renderLoading = {true}
-                    source={{uri:'https://www.baidu.com'}}
+                    // renderLoading = {true}
+                    source={{uri:'http://www.baidu.com'}}
                     style={{width:'100%',height:'100%'}}
                 />
             </View>

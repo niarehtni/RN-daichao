@@ -8,7 +8,8 @@ import React, {Component} from 'react';
 import {
     Platform,
     Image,
-    StyleSheet
+    StyleSheet,
+    View
 } from 'react-native';
 import {
     StackNavigator,
@@ -18,21 +19,41 @@ import {
 
 import Home from './src/pages/daichao/Home/Home';
 import WebPager from './src/pages/daichao/WebPager/WebPager';
-
+import Loading from './src/component/loading.js';
 
 import Person from './src/pages/demo/Personal/Personal';
 import HomePager from './src/pages/demo/HomePager/HomePager';
 
+let self; //将App组件中的this赋给全局的self
+global.showLoading = false; //所有子页面均可直接调用global.showLoading()来展示Loading
+global.closeLoading = false; //所有子页面均可直接调用global.closeLoading()来关闭Loading
 
 export  default class App extends Component<Props> {
+    componentDidMount() {
+        self = this;
+        global.showLoading = function () {
+            self.Loading.show();
+        };
+        global.closeLoading = function () {
+            self.Loading.close();
+        };
+    }
+
     render() {
         if (Platform.OS === 'android') {
             return (
+            <View style={[{flex: 1}]}>
                 <Navi/>
+                <Loading ref={r=>{this.Loading = r}} hide = {true} />
+            </View>
+               
             )
         }else{
             return (
-                <Navi></Navi>
+            <View style={[{flex: 1}]}>
+                <Navi/>
+                <Loading ref={r=>{this.Loading = r}} hide = {true} />
+            </View>
             )
         }
     }

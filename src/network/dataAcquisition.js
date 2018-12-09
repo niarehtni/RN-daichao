@@ -1,78 +1,133 @@
-import * as dataLink from './dataLink'
-import * as sysJson from './sysJson'
+//定义接口名称以及接口方法
+import dataLink from './dataLink';
+import sysJson from './sysJson';
 
-// let findFrontInforListInterface = sysJson.address + 'admin/loanmgmt/v1/getLoanByFirmId' // 前端列表接口地址-例子
-let CheckTableInforListInterface = sysJson.address.url + 'admin/Column/CheckTable' // 查询列表接口地址
-let loginEmailInterface = sysJson.address.url + 'admin/People/loginEmail' // 登录接口
-let databaseListInterface = sysJson.address.url + 'admin/Column/CheckTableList' // 查询所有接口
-let newTableInterface = sysJson.address.url + 'admin/Column/newTable' // 新建数据库
-let updateTableInterface = sysJson.address.url + 'admin/Column/updateTable' // 修改数据库
-let deleTableInterface = sysJson.address.url + 'admin/Column/deleTable' // 修改数据库
-let checkFieldInterface = sysJson.address.url + 'admin/Program/checkField' // 通过字段查询
-let addInfosInterface = sysJson.address.url + 'admin/Program/addInfos' // 增加信息接口
-let deleInfosInterface = sysJson.address.url + 'admin/Program/deleInfos' // 增加信息接口
-let updateInfosInterface = sysJson.address.url + 'admin/Program/updateInfos' // 更新信息接口
 
-// 获取前端列表-例子
-// function findFrontInforList (params, callback, err) {
-//   dataLink.dataLinkPostJson(findFrontInforListInterface, params, callback, err)
+//登录
+let userLoginInterface = sysJson.dataUrl + "userLogin.do";
+
+//查找登录页面的角色数据词典
+let findOrgDataDicListInterface = sysJson.dataUrl +"user/dataDic/findOrgDataDicList.do";
+
+//修改密码
+let modifyPwdInterface = sysJson.dataUrl + "user/dataDic/modifyPwd.do";
+
+// 增加/修改信息：
+let updateFrontInfoInterface = sysJson.dataUrl+"information/Infohtml/updateFrontInfo.do"
+// 删除信息：
+let deleteInfoInterface = sysJson.dataUrl + "information/Infohtml/deleteInfo.do"
+// 查询信息列表：
+let findFrontInfoTempListInterface = sysJson.dataUrl +"information/Infohtml/findFrontInfoTempList.do"
+// 查询信息详情
+let findFrontTempInfoInterface = sysJson.dataUrl + "information/Infohtml/findFrontTempInfo.do"
+//上传图片
+let uploadFileOneInterface = sysJson.dataUrl+"system/enclosure/uploadFileOne.do"
+//查看图片
+let findimgfileInterface = sysJson.dataUrl + "system/enclosure/findimgfile.do"
+
+//查找栏目列表
+let findColumnListInterface = sysJson.dataUrl + "column/manageColumn/findColumnList.do"
+
+//查找个人菜单列表
+let findPeopleMenuListInterface = sysJson.dataUrl + "user/menu/findPeopleMenuList.do"
+
+//上传图片
+let plUploadFileInterface = sysJson.dataUrl + "system/enclosure/plUploadFile.do"
+
+// =========================================================================
+
+//登录
+let userLogin = (params, callback, err)=>{
+  dataLink.FetchUtil.dataLinkPostJson(userLoginInterface, params, callback, err)
+}
+
+//查找登录页面的角色数据词典
+function findOrgDataDicList(params, callback, err) {
+  dataLink.FetchUtil.dataLinkPostJson(findOrgDataDicListInterface, params, callback, err)
+}
+
+//修改密码
+function modifyPwd(params, callback, err) {
+  dataLink.dataLinkPostJson(modifyPwdInterface, params, callback, err)
+}
+
+
+//增加/修改信息：
+function updateFrontInfo(params, callback, err) {
+  dataLink.dataLinkPostJson(updateFrontInfoInterface, params, callback, err)
+}
+
+// 删除信息：
+function deleteInfo(params, callback, err) {
+  dataLink.dataLinkPostJson(deleteInfoInterface, params, callback, err)
+}
+
+// 查询信息列表：
+let findFrontInfoTempList = (params, callback, err)=>{
+  dataLink.dataLinkPostJson(findFrontInfoTempListInterface, params, callback, err)
+}
+
+// 查询信息详情
+function findFrontTempInfo(params, callback, err) {
+  dataLink.dataLinkPostJson(findFrontTempInfoInterface, params, callback, err)
+}
+
+// 上传图片
+function uploadFileOne(params, callback, err) {
+  dataLink.dataLinkPostJson(uploadFileOneInterface, params, callback, err)
+}
+
+// 查看图片
+function findimgfile(params, callback, err) {
+  dataLink.dataLinkPostJson(findimgfileInterface, params, callback, err)
+}
+
+//查找栏目列表
+function findColumnList(params, callback, err) {
+  dataLink.dataLinkPostJson(findColumnListInterface, params, callback, err)
+}
+
+//查找个人菜单列表
+function findPeopleMenuList(params, callback, err) {
+  dataLink.dataLinkPostJson(findPeopleMenuListInterface, params, callback, err)
+}
+
+//上传图片
+function plUploadFile(params, callback, err) {
+  dataLink.dataLinkPostJson(plUploadFileInterface, params, callback, err)
+}
+
+
+//================================================================================
+//React方式
+export default{
+  userLogin,
+  findOrgDataDicList,
+  modifyPwd,
+  updateFrontInfo,
+  deleteInfo,
+  findFrontInfoTempList,
+  findFrontTempInfo,
+  uploadFileOne,
+  findimgfile,
+  findColumnList,
+  findPeopleMenuList,
+  plUploadFile
+}
+
+//================================================================================
+//微信小程序方式
+// module.exports = {
+//   userLogin: userLogin,
+//   findOrgDataDicList: findOrgDataDicList,
+//   modifyPwd: modifyPwd,
+//   updateFrontInfo: updateFrontInfo,
+//   deleteInfo: deleteInfo,
+//   findFrontInfoTempList: findFrontInfoTempList,
+//   findFrontTempInfo: findFrontTempInfo,
+//   uploadFileOne: uploadFileOne,
+//   findimgfile: findimgfile,
+//   findColumnList: findColumnList,
+//   findPeopleMenuList: findPeopleMenuList,
+//   plUploadFile: plUploadFile
 // }
-// 获取人员列表
-function findUserList (params, callback, err) {
-  dataLink.dataLinkPostJson(CheckTableInforListInterface, params, callback, err)
-}
-
-// 通过邮箱登录
-function loginEmailList (params, callback, err) {
-  dataLink.dataLinkPostJson(loginEmailInterface, params, callback, err)
-}
-
-// 查询数据库列表
-function databaseList (params, callback, err) {
-  dataLink.dataLinkPostJson(databaseListInterface, params, callback, err)
-}
-
-// 新建数据库
-function newTableOperation (params, callback, err) {
-  dataLink.dataLinkPostJson(newTableInterface, params, callback, err)
-}
-
-// 修改数据库
-function updateTableOperation (params, callback, err) {
-  dataLink.dataLinkPostJson(updateTableInterface, params, callback, err)
-}
-
-// 修改数据库
-function deleTableOperation (params, callback, err) {
-  dataLink.dataLinkPostJson(deleTableInterface, params, callback, err)
-}
-
-function checkField (params, callback, err) {
-  dataLink.dataLinkPostJson(checkFieldInterface, params, callback, err)
-}
-
-function addInfos (params, callback, err) {
-  dataLink.dataLinkPostJson(addInfosInterface, params, callback, err)
-}
-
-function deleInfos (params, callback, err) {
-  dataLink.dataLinkPostJson(deleInfosInterface, params, callback, err)
-}
-
-function updateInfos (params, callback, err) {
-  dataLink.dataLinkPostJson(updateInfosInterface, params, callback, err)
-}
-
-export {
-  // findFrontInforList,
-  findUserList,
-  loginEmailList,
-  databaseList,
-  newTableOperation,
-  updateTableOperation,
-  deleTableOperation,
-  checkField,
-  addInfos,
-  deleInfos,
-  updateInfos
-}

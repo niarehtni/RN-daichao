@@ -12,10 +12,12 @@ import {
   TouchableOpacity
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-import { Button } from 'react-native-elements'
+// import { Button } from 'react-native-elements'
 import Contacts from 'react-native-contacts';
-import { StackNavigator } from 'react-navigation';
-// import My from '../My/My'
+// import { StackNavigator } from 'react-navigation';
+import MyDialog from '../../../component/Dialog/MyDialog.js'
+import dataLink from '../../../network/dataLink'
+
 import Css from './HomeCss';
 const styles = StyleSheet.create(Css);
 
@@ -28,7 +30,15 @@ constructor(props) {
 }
 //跳转下一个页面
 goToNextPage() {
-    this.props.navigation.navigate('WebPager')
+
+  // let url = "http://47.96.8.95/h5/place/huibaotong/eshop_product/place.json?productId=1"
+  //   dataLink.dataLinkGetJson(url, (res) => {
+  //     console.log('====================================');
+  //     console.log(res);
+  //     console.log('====================================');
+  //   })
+
+  this.props.navigation.navigate('WebPager')
 }
 
 render() {
